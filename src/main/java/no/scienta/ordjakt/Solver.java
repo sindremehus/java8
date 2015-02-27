@@ -37,9 +37,7 @@ public class Solver {
             Cell cell = board.getCell(tail);
             cell.setVisited(true);
 
-            for (Cell neighbour : cell.getUnvisitedNeighbours()) {
-                solveForPath(path.append(neighbour.getPosition()));
-            }
+            cell.getUnvisitedNeighbours().forEach(neighbour -> solveForPath(path.append(neighbour.getPosition())));
             cell.setVisited(false);
         }
     }

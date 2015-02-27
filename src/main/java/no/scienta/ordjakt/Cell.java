@@ -2,7 +2,7 @@ package no.scienta.ordjakt;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 /**
  * @author Sindre Mehus
@@ -29,8 +29,8 @@ public class Cell {
         }
     }
 
-    public List<Cell> getUnvisitedNeighbours() {
-        return neighbours.stream().filter(cell -> !cell.visited).collect(Collectors.toList());
+    public Stream<Cell> getUnvisitedNeighbours() {
+        return neighbours.stream().filter(cell -> !cell.visited);
     }
 
     public void setCharacter(char character) {
