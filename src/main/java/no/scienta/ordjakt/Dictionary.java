@@ -19,7 +19,7 @@ public class Dictionary {
     public Dictionary() throws IOException {
         URL resource = getClass().getResource("/ordliste.txt");
         try (InputStream in = resource.openStream()) {
-            words.addAll(IOUtils.readLines(in));
+            words.addAll(IOUtils.readLines(in, "UTF-8"));
         }
     }
 
@@ -28,6 +28,7 @@ public class Dictionary {
     }
 
     public boolean containsStart(String word) {
-        return words.ceiling(word).startsWith(word);
+        String ceiling = words.ceiling(word);
+        return ceiling != null && ceiling.startsWith(word);
     }
 }
