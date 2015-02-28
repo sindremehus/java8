@@ -12,11 +12,12 @@ public class Cell {
 
     private final Position position;
     private final List<Cell> neighbours = new ArrayList<>();
-    private char character;
+    private final char character;
     private boolean visited;
 
-    public Cell(Position position) {
+    public Cell(Position position, char character) {
         this.position = position;
+        this.character = character;
     }
 
     public Position getPosition() {
@@ -31,10 +32,6 @@ public class Cell {
 
     public Stream<Cell> getUnvisitedNeighbours() {
         return neighbours.stream().filter(cell -> !cell.visited);
-    }
-
-    public void setCharacter(char character) {
-        this.character = character;
     }
 
     public char getCharacter() {

@@ -9,9 +9,8 @@ public class BoardBuilder {
     private final static int ROWS = 4;
     private final static int COLUMNS = 4;
 
-    public Board build() {
-
-        Board board = new Board(ROWS, COLUMNS);
+    public Board build(String characters) {
+        Board board = new Board(ROWS, COLUMNS, characters);
         for (int row = 0; row < ROWS; row++) {
             for (int column = 0; column < COLUMNS; column++) {
                 Cell cell = board.getCell(row, column);

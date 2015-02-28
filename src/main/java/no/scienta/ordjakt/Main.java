@@ -4,6 +4,8 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
+import com.google.common.base.Joiner;
+
 /**
  * @author Sindre Mehus
  * @version $Id$
@@ -29,7 +31,7 @@ public class Main {
         String line = "";
         while (line.length() != 16) {
             System.out.print("Enter 16 characters: ");
-            line = reader.readLine().replaceAll("\\s+", "");
+            line = reader.readLine().replaceAll("\\s+", "").toUpperCase();
             if (line.isEmpty()) {
                 return null;
             }
@@ -37,14 +39,13 @@ public class Main {
         return line;
     }
 
-    private void solve(String line) {
-        Board board = new BoardBuilder().build();
-        board.setCharacters(line);
+    private void solve(String characters) {
+        Board board = new BoardBuilder().build(characters);
 
         Solver solver = new Solver(board, dictionary);
         solver.solve();
 
-        System.out.println(solver.getSolutions());
+        System.out.println(Joiner.on("\n").join(solver.getSolutions()));
     }
 
     public static void main(String[] args) throws IOException {
